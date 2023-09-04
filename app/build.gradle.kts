@@ -80,7 +80,6 @@ dependencies {
     implementation("androidx.room:room-runtime:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
     ksp("androidx.room:room-compiler:$roomVersion")
-    ksp("androidx.room:room-compiler:$roomVersion") // Add this line
 
     implementation("androidx.compose.ui:ui-util")
 
@@ -91,4 +90,6 @@ dependencies {
 
     implementation("androidx.navigation:navigation-compose:2.7.1")
     implementation("androidx.compose.material:material-icons-extended")
+
+    implementation("androidx.paging:paging-runtime-ktx:3.2.0")
 }
