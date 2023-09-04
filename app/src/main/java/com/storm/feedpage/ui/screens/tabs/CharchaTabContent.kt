@@ -11,9 +11,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
-import com.storm.feedpage.ui.screens.home.HomeViewModel
 import com.storm.feedpage.ui.components.PostCard
+import com.storm.feedpage.ui.screens.home.HomeViewModel
 
 @Composable
 fun CharchaTabContent(
@@ -33,8 +32,7 @@ fun CharchaTabContent(
                 if (i >= state.posts.size - 1 && !state.endReached && !state.isLoading) {
                     viewModel.loadNextItems()
                 }
-//                PostCard(post = item, navigateToSelectedPost)
-                PostCard(post = item){
+                PostCard(post = item, viewModel = viewModel){
                     navigateToSelectedPost(item.postId)
                     viewModel.updatePostId(item.postId)
                 }

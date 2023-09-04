@@ -58,5 +58,28 @@ class HomeViewModel @Inject constructor(
     fun updatePostId(postId: Int) {
         state = state.copy(postId = postId)
     }
+
+    fun timeAgo(lastLoggedInTime: Long): String {
+        val currentTimeMillis = System.currentTimeMillis()
+        val timeDifferenceMillis = currentTimeMillis - lastLoggedInTime
+
+         return when {
+            timeDifferenceMillis < 60 * 1000 -> "Just now"
+            timeDifferenceMillis < 60 * 60 * 1000 -> {
+                val minutes = (timeDifferenceMillis / (60 * 1000)).toInt()
+                "$minutes ${if (minutes == 1) "minute" else "minutes"} ago"
+            }
+
+            timeDifferenceMillis < 24 * 60 * 60 * 1000 -> {
+                val hours = (timeDifferenceMillis / (60 * 60 * 1000)).toInt()
+                "$hours ${if (hours == 1) "hour" else "hours"} ago"
+            }
+
+            else -> {
+                val days = (timeDifferenceMillis / (24 * 60 * 60 * 1000)).toInt()
+                "$days ${if (days == 1) "day" else "days"} ago"
+            }
+        }
+    }
 }
 

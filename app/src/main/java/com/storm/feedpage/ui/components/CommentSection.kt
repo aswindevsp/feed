@@ -73,7 +73,7 @@ fun CommentSection(
         ) {
             LazyColumn {
                 item {
-                    UpperCommentBody(post)
+                    UpperCommentBody(post, viewModel)
                     Divider(
                         thickness = 1.dp,
                         color = MaterialTheme.colorScheme.inverseOnSurface
@@ -95,8 +95,8 @@ fun CommentSection(
 
 
 @Composable
-fun UpperCommentBody(post: Post) {
-    PostHeader(post = post)
+fun UpperCommentBody(post: Post, viewModel: HomeViewModel) {
+    PostHeader(post = post, viewModel = viewModel )
     PostBody(post = post)
     Box(
         modifier = Modifier

@@ -34,13 +34,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.storm.feedpage.R
 import com.storm.feedpage.model.Post
+import com.storm.feedpage.ui.screens.home.HomeViewModel
 
 
 @Composable
-fun PostCard(post: Post, navigateToSelectedPost: (Int) -> Unit) {
+fun PostCard(post: Post,viewModel: HomeViewModel , navigateToSelectedPost: (Int) -> Unit) {
     Column(
     ) {
-        PostHeader(post = post)
+        PostHeader(post = post, viewModel = viewModel)
         PostBody(post = post)
         PostFooter(post = post, navigateToSelectedPost = navigateToSelectedPost)
     }
@@ -50,7 +51,7 @@ fun PostCard(post: Post, navigateToSelectedPost: (Int) -> Unit) {
 
 
 @Composable
-fun PostHeader(post: Post) {
+fun PostHeader(post: Post, viewModel: HomeViewModel) {
     Box(modifier = Modifier.padding(12.dp)) {
         Row(modifier = Modifier.fillMaxWidth()) {
             Image(
@@ -68,7 +69,7 @@ fun PostHeader(post: Post) {
                 )
                 Spacer(modifier = Modifier.height(2.dp))
                 Text(
-                    text = "2 hours ago",
+                    text = viewModel.timeAgo(post.postTime),
                     style = MaterialTheme.typography.bodyMedium,
                     color = Color.Gray
                 )
