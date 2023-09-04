@@ -45,7 +45,7 @@ fun PostCard(post: Post, navigateToSelectedPost: (Int) -> Unit) {
         PostFooter(post = post, navigateToSelectedPost = navigateToSelectedPost)
     }
 
-    Divider()
+    Divider(color = MaterialTheme.colorScheme.inverseOnSurface)
 }
 
 
