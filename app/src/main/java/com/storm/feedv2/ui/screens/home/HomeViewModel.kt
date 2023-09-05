@@ -23,9 +23,6 @@ class HomeViewModel @Inject constructor(
     val getAllPosts = repository.getAllPosts()
 
 
-    fun updatePostId(postId: Int) {
-        state = state.copy(postId = postId)
-    }
 
     fun updatePost(post: Post) {
         state = state.copy(post = post)

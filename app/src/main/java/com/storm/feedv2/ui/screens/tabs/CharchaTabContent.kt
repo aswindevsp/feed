@@ -22,19 +22,9 @@ fun CharchaTabContent(
     val posts = viewModel.getAllPosts.collectAsLazyPagingItems()
 
     LazyColumn {
-        if(posts.loadState.refresh == LoadState.Loading) {
-            item {
-                CircularProgressIndicator(
-                    modifier = Modifier.fillMaxWidth()
-                        .wrapContentWidth(Alignment.CenterHorizontally)
-                )
-            }
-        }
-
         items(count = posts.itemCount) {index->
             val post = posts[index]
             if (post != null) {
-//                Text(text = "Index = $index: ${post.postString}")
                 PostCard(post = post, viewModel = viewModel){
                     navigateToSelectedPost(post.postId.toInt())
                     viewModel.updatePost(post)
@@ -51,37 +41,5 @@ fun CharchaTabContent(
             }
         }
     }
-
-//    Surface(
-//        modifier = Modifier.fillMaxSize()
-//    ) {
-//        LazyColumn(
-//            modifier = Modifier.fillMaxSize()
-//        ) {
-//            items(state.posts.size) { i ->
-//                val item = state.posts[i]
-////                if (i >= state.posts.size - 1 && !state.endReached && !state.isLoading) {
-////                    viewModel.loadNextItems()
-////                }
-//                PostCard(post = item, viewModel = viewModel){
-//                    navigateToSelectedPost(item.postId)
-//                    viewModel.updatePostId(item.postId)
-//                }
-//
-//            }
-//            item {
-//                if (state.isLoading) {
-//                    Row(
-//                        modifier = Modifier
-//                            .fillMaxWidth()
-//                            .padding(8.dp),
-//                        horizontalArrangement = Arrangement.Center
-//                    ) {
-//                        CircularProgressIndicator()
-//                    }
-//                }
-//            }
-//        }
-//    }
 
 }
