@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "FeedPage"
+rootProject.name = "FeedV2"
 include(":app")
  
